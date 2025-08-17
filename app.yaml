@@ -1,0 +1,9 @@
+# app.yaml  ── Databricks will read this during deployment
+# 1. Build: npm install  ➜  npm run build   (Databricks does this automatically)
+# 2. Run  : node build/index.js --port 8080
+command: ["node", "build/index.js", "--port", "8080"]
+
+# No API key is required for this server, so only optional environment vars
+env:
+  - name: PORT            # honour Databricks-provided port if present
+    valueFrom: PORT       # Databricks injects its dynamic port number
